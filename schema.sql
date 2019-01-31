@@ -5,7 +5,7 @@
 -- Dumped from database version 11.1
 -- Dumped by pg_dump version 11.1
 
--- Started on 2019-01-31 12:04:34
+-- Started on 2019-01-31 12:14:39
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -84,7 +84,7 @@ CREATE TABLE public.user_groups (
 ALTER TABLE public.user_groups OWNER TO postgres;
 
 --
--- TOC entry 2823 (class 0 OID 32820)
+-- TOC entry 2825 (class 0 OID 32820)
 -- Dependencies: 196
 -- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -92,7 +92,7 @@ ALTER TABLE public.user_groups OWNER TO postgres;
 
 
 --
--- TOC entry 2825 (class 0 OID 32833)
+-- TOC entry 2827 (class 0 OID 32833)
 -- Dependencies: 198
 -- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -103,7 +103,7 @@ INSERT INTO public.user_groups VALUES (3, 'unconfirmed user', 'group of unconfir
 
 
 --
--- TOC entry 2832 (class 0 OID 0)
+-- TOC entry 2834 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: id_increment; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -112,7 +112,7 @@ SELECT pg_catalog.setval('public.id_increment', 1, true);
 
 
 --
--- TOC entry 2833 (class 0 OID 0)
+-- TOC entry 2835 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: user_groups_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -121,7 +121,7 @@ SELECT pg_catalog.setval('public.user_groups_seq', 3, true);
 
 
 --
--- TOC entry 2700 (class 2606 OID 41092)
+-- TOC entry 2702 (class 2606 OID 41092)
 -- Name: user_groups UG_id; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -130,7 +130,16 @@ ALTER TABLE ONLY public.user_groups
 
 
 --
--- TOC entry 2696 (class 2606 OID 41081)
+-- TOC entry 2696 (class 2606 OID 41149)
+-- Name: User email; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."User"
+    ADD CONSTRAINT email UNIQUE (email);
+
+
+--
+-- TOC entry 2698 (class 2606 OID 41081)
 -- Name: User id; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -139,7 +148,7 @@ ALTER TABLE ONLY public."User"
 
 
 --
--- TOC entry 2698 (class 2606 OID 41052)
+-- TOC entry 2700 (class 2606 OID 41052)
 -- Name: User username; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -148,7 +157,7 @@ ALTER TABLE ONLY public."User"
 
 
 --
--- TOC entry 2701 (class 2606 OID 41105)
+-- TOC entry 2703 (class 2606 OID 41105)
 -- Name: User for_UG; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -156,7 +165,7 @@ ALTER TABLE ONLY public."User"
     ADD CONSTRAINT "for_UG" FOREIGN KEY (reg_id) REFERENCES public.user_groups(id);
 
 
--- Completed on 2019-01-31 12:04:34
+-- Completed on 2019-01-31 12:14:39
 
 --
 -- PostgreSQL database dump complete
